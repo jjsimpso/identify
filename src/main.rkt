@@ -14,9 +14,6 @@
      #'(require (rename-in path (magic-query name1) (magic-query-run-all name2)))]
     [(_) (error "invalid argument")]))
 
-;; broken due to hygiene issues. the required bindings aren't created in the correct scope.
-;; my attempts to fix using datum->syntax to set the scope push require out of the module level,
-;; which is also an error.
 (define-syntax (include-magic-from-dir stx)
   (syntax-parse stx
     [(_ path)
@@ -26,15 +23,17 @@
        (printf "~a~n" magic-files)
        #`(begin
            #,@(for/list ([file-path magic-files])
-                #`(require-magic-rename #,(path->string file-path)))))]
+                (datum->syntax
+                 #'path
+                 `(,#'require-magic-rename ,(path->string file-path))))))]
     [(_) (error "invalid argument")]))
 
-;(include-magic-from-dir "../magic")
+(include-magic-from-dir "magic")
 
 ;(require (rename-in "../magic/elf.rkt" (magic-query elf-query) (magic-query-run-all elf-query-all)))
 ;(require (rename-in "../magic/images.rkt" (magic-query image-query) (magic-query-run-all image-query-all)))
-(require-magic-rename "../magic/elf.rkt")
-(require-magic-rename "../magic/images.rkt")
+;(require-magic-rename "magic/elf.rkt")
+;(require-magic-rename "magic/images.rkt")
 
 (define identify-version "0.1.0")
 (define run-all (make-parameter #f))
