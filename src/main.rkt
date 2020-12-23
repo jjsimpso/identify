@@ -5,13 +5,17 @@
 
 (require (for-syntax syntax/stx syntax/parse racket/syntax racket/string racket/list))
 
+(define magic-query-list (make-parameter '()))
+
 (define-syntax (require-magic-rename stx)
   (syntax-parse stx
     [(_ path)
      #:with name-prefix (datum->syntax #'path (last (string-split (string-trim (syntax-e #'path) ".rkt") "/")))
      #:with name1 (format-id #'name-prefix "~a-query" (syntax-e #'name-prefix))
      #:with name2 (format-id #'name-prefix "~a-query-all" (syntax-e #'name-prefix))
-     #'(require (rename-in path (magic-query name1) (magic-query-run-all name2)))]
+     #'(begin
+         (magic-query-list (cons name1 (magic-query-list)))
+         (require (rename-in path (magic-query name1) (magic-query-run-all name2))))]
     [(_) (error "invalid argument")]))
 
 (define-syntax (include-magic-from-dir stx)
@@ -39,8 +43,13 @@
 (define run-all (make-parameter #f))
 
 (define (query-magic path)
-  (or (with-input-from-file path elf-query)
-      (with-input-from-file path images-query)))
+  (let loop ([query-list (magic-query-list)])
+    (if (null? query-list)
+        #f
+        (let ([result (with-input-from-file path (car query-list))])
+          (if result
+              result
+              (loop (cdr query-list)))))))
 
 (module+ main
   (set-magic-verbosity! 'warning)
