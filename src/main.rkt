@@ -3,7 +3,7 @@
 (require racket/cmdline)
 (require magic/output)
 
-(require (for-syntax syntax/stx syntax/parse racket/syntax racket/string racket/list))
+(require (for-syntax syntax/stx syntax/parse racket/syntax racket/string racket/list racket/path))
 
 (define magic-query-list (make-parameter '()))
 
@@ -22,7 +22,7 @@
   (syntax-parse stx
     [(_ path)
      (let ([magic-files (filter
-                         file-exists?
+                         (lambda (p) (path-has-extension? p #".rkt"))
                          (directory-list (syntax-e #'path) #:build? #t))])
        (printf "~a~n" magic-files)
        #`(begin
@@ -32,15 +32,10 @@
                  `(,#'require-magic-rename ,(path->string file-path))))))]
     [(_) (error "invalid argument")]))
 
-(include-magic-from-dir "magic")
-
-;(require (rename-in "../magic/elf.rkt" (magic-query elf-query) (magic-query-run-all elf-query-all)))
-;(require (rename-in "../magic/images.rkt" (magic-query image-query) (magic-query-run-all image-query-all)))
-;(require-magic-rename "magic/elf.rkt")
-;(require-magic-rename "magic/images.rkt")
-
-(define identify-version "0.1.0")
-(define run-all (make-parameter #f))
+;; there are two approaches to building the magic: build each magic file separately or concatenate them all into one file
+;; include-magic-from-dir requires each individual file, each of which must be compiled separately. it will be query-magic's
+;; responsibility to query each magic individually.
+;(include-magic-from-dir "magic")
 
 (define (query-magic path)
   (let loop ([query-list (magic-query-list)])
@@ -50,6 +45,15 @@
           (if result
               result
               (loop (cdr query-list)))))))
+
+
+;; or the simpler approach, allmagic.rkt is built by the makefile by concatenating all the magic
+(require "allmagic.rkt")
+(define (query-monolithic-magic path)
+  (with-input-from-file path magic-query))
+
+(define identify-version "0.1.0")
+(define run-all (make-parameter #f))
 
 (module+ main
   (set-magic-verbosity! 'warning)
@@ -68,7 +72,7 @@
      filename))
   
   (when target-file
-    (define result (query-magic target-file))
+    (define result (query-monolithic-magic target-file))
     
     (cond
       [(magic-result? result)
