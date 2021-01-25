@@ -1,6 +1,12 @@
-SRC_FILES = src/main.rkt
+SRC_FILES = src/main.rkt src/allmagic.rkt
 #SRC_FILES += magic/images.rkt
-MAGIC_FILES = elf images
+
+MAGIC_FILES = elf
+MAGIC_FILES += msdos
+MAGIC_FILES += windows
+#MAGIC_FILES += apple
+MAGIC_FILES += jpeg
+MAGIC_FILES += images
 
 EXE = id
 DIST_DIR = identify
@@ -10,7 +16,7 @@ MAGIC = src/allmagic.rkt
 
 all: dist
 
-$(EXE): compmagic $(SRC_FILES)
+$(EXE): $(SRC_FILES)
 	raco make -v src/main.rkt
 	raco exe -v -o $(EXE) src/main.rkt
 
@@ -25,5 +31,5 @@ clean:
 	rm -rf src/compiled/
 	rm -rf magic/compiled/
 	rm -f $(EXE)
-	rm -f $(MAGIC)
+#       rm -f $(MAGIC)
 	rm -rf $(DIST_DIR)
