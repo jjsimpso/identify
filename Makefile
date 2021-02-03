@@ -2,11 +2,15 @@ SRC_FILES = src/main.rkt src/allmagic.rkt
 #SRC_FILES += magic/images.rkt
 
 MAGIC_FILES = elf
-MAGIC_FILES += msdos
 MAGIC_FILES += windows
-#MAGIC_FILES += apple
+MAGIC_FILES += apple
 MAGIC_FILES += jpeg
 MAGIC_FILES += images
+MAGIC_FILES += msdos
+MAGIC_FILES += zfs
+MAGIC_FILES += zilog
+MAGIC_FILES += zip
+MAGIC_FILES += zyxel
 
 EXE = id
 DIST_DIR = identify
