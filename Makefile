@@ -22,6 +22,22 @@ MAGIC_FILES += assembler
 MAGIC_FILES += asterix
 MAGIC_FILES += att3b
 MAGIC_FILES += audio
+
+MAGIC_FILES += basis
+MAGIC_FILES += beetle
+MAGIC_FILES += ber
+MAGIC_FILES += bflt
+MAGIC_FILES += bhl
+MAGIC_FILES += bioinformatics
+MAGIC_FILES += blackberry
+MAGIC_FILES += blcr
+MAGIC_FILES += blender
+MAGIC_FILES += blit
+MAGIC_FILES += bout
+MAGIC_FILES += bsdi
+MAGIC_FILES += bsi
+MAGIC_FILES += btsnoop
+
 MAGIC_FILES += windows
 MAGIC_FILES += apple
 MAGIC_FILES += jpeg
