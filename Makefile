@@ -63,6 +63,18 @@ MAGIC_FILES += ctf
 MAGIC_FILES += cubemap
 MAGIC_FILES += cups
 
+MAGIC_FILES += dact
+#MAGIC_FILES += database
+MAGIC_FILES += dataone
+MAGIC_FILES += dbpf
+#MAGIC_FILES += der
+MAGIC_FILES += diamond
+MAGIC_FILES += diff
+MAGIC_FILES += digital
+MAGIC_FILES += dolby
+MAGIC_FILES += dump
+MAGIC_FILES += dyadic
+
 MAGIC_FILES += windows
 MAGIC_FILES += apple
 MAGIC_FILES += jpeg
