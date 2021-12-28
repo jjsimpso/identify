@@ -64,7 +64,7 @@ MAGIC_FILES += cubemap
 MAGIC_FILES += cups
 
 MAGIC_FILES += dact
-#MAGIC_FILES += database
+MAGIC_FILES += database
 MAGIC_FILES += dataone
 MAGIC_FILES += dbpf
 #MAGIC_FILES += der
