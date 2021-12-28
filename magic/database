@@ -489,9 +489,9 @@
 #>>52	ulelong		3		\b, CleanShutdown
 >>52	ulelong		4		\b, BeingConverted
 >>52	ulelong		5		\b, ForceDetach
-# Windows NT major version when the databases indexes were updated.
+# WindowsÂ NT major version when the databases indexes were updated.
 >>216	ulelong		x		\b, Windows version %d
-# Windows NT minor version
+# WindowsÂ NT minor version
 >>220	ulelong		x		\b.%d
 
 # From: Joerg Jenderek
