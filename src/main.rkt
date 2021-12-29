@@ -56,18 +56,21 @@
 (define run-all (make-parameter #f))
 
 (module+ main
-  (set-magic-verbosity! 'warning)
+  (set-magic-verbosity! 'error)
 
   (define target-file
     (command-line
      #:once-any
      [("-v") "Print version number"
              (printf "identify version ~a~n" identify-version)]
-     
+
      #:once-each
      [("-a") "Run all queries"
              (run-all #t)]
      
+     [("-V") "Verbose output"
+             (set-magic-verbosity! 'debug)]
+
      #:args (filename)
      filename))
   
