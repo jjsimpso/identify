@@ -75,6 +75,15 @@ MAGIC_FILES += dolby
 MAGIC_FILES += dump
 MAGIC_FILES += dyadic
 
+MAGIC_FILES += ebml
+MAGIC_FILES += editors
+MAGIC_FILES += efi
+MAGIC_FILES += encore
+MAGIC_FILES += epoc
+MAGIC_FILES += erlang
+MAGIC_FILES += esri
+MAGIC_FILES += etf
+
 MAGIC_FILES += windows
 MAGIC_FILES += apple
 MAGIC_FILES += jpeg
