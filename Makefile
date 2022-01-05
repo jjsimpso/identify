@@ -84,6 +84,18 @@ MAGIC_FILES += erlang
 MAGIC_FILES += esri
 MAGIC_FILES += etf
 
+MAGIC_FILES += fcs
+MAGIC_FILES += filesystems
+MAGIC_FILES += finger
+MAGIC_FILES += flash
+MAGIC_FILES += flif
+MAGIC_FILES += fonts
+MAGIC_FILES += fortran
+MAGIC_FILES += frame
+MAGIC_FILES += freebsd
+MAGIC_FILES += fsav
+MAGIC_FILES += fusecompress
+
 MAGIC_FILES += windows
 MAGIC_FILES += apple
 MAGIC_FILES += jpeg
