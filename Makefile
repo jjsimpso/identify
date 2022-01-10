@@ -96,6 +96,21 @@ MAGIC_FILES += freebsd
 MAGIC_FILES += fsav
 MAGIC_FILES += fusecompress
 
+MAGIC_FILES += games
+MAGIC_FILES += gcc
+MAGIC_FILES += gconv
+MAGIC_FILES += geo
+MAGIC_FILES += geos
+MAGIC_FILES += gimp
+MAGIC_FILES += gnome
+MAGIC_FILES += gnu
+MAGIC_FILES += gnumeric
+MAGIC_FILES += gpt
+MAGIC_FILES += gpu
+MAGIC_FILES += grace
+MAGIC_FILES += graphviz
+MAGIC_FILES += gringotts
+
 MAGIC_FILES += windows
 MAGIC_FILES += apple
 MAGIC_FILES += jpeg
