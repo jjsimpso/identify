@@ -111,6 +111,20 @@ MAGIC_FILES += grace
 MAGIC_FILES += graphviz
 MAGIC_FILES += gringotts
 
+MAGIC_FILES += hitachi-sh
+MAGIC_FILES += hp
+MAGIC_FILES += human68k
+
+MAGIC_FILES += ibm370
+MAGIC_FILES += icc
+MAGIC_FILES += iff
+MAGIC_FILES += inform
+MAGIC_FILES += intel
+MAGIC_FILES += interleaf
+MAGIC_FILES += island
+MAGIC_FILES += ispell
+MAGIC_FILES += isz
+
 MAGIC_FILES += windows
 MAGIC_FILES += apple
 MAGIC_FILES += jpeg
@@ -120,6 +134,9 @@ MAGIC_FILES += zfs
 MAGIC_FILES += zilog
 MAGIC_FILES += zip
 MAGIC_FILES += zyxel
+
+# this one goes last because it has spurious matches
+MAGIC_FILES += ibm6000
 
 EXE = id
 DIST_DIR = identify
